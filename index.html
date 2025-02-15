@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustav za praćenje stanja biljke</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <div class="left">
+        <div class="title">
+            <h1>Sustav za praćenje stanja biljke</h1>
+        </div>
+        <div class="state-list">
+
+            <h3>🌡️ Sensor Data</h3>
+            <p id="temperature-text">Trenutna temperatura: --°C</p>
+            <p id="humidity-text">Trenutna vlaga: --%</p>
+            <p id="time-text">Vrijeme učitavanja: --h</p>
+
+            <h3>💧 Watering Data</h3>
+            <p id="water-text">Posljednji put zaliveno: --</p>
+            <p id="next-water-text">Status biljke: --</p>
+
+        </div>
+
+        <div class="error-list">
+            <span>Odaberi pogrešku:</span>
+            <form>
+                <label>
+                    <input type="radio" id="water" name="selected-error" value="Water">
+                    Vrijeme zalijevanja
+                </label>
+                <label>
+                    <input type="radio" id="temperature" name="selected-error" value="Temperature">
+                    Temperatura
+                </label>
+                <label>
+                    <input type="radio" id="humidity" name="selected-error" value="Humidity">
+                    Vlaga
+                </label>
+            </form>
+        </div>
+        <div class="buttons">
+            <button onclick="sendCommand('1')">UPALI OBAVIJEST</button>
+            <button onclick="sendCommand('0')">UGASI OBAVIJEST</button>
+            <button onclick="getSensorData()">Get Sensor Data</button>
+        </div>
+    </div>
+    <div class="right">
+        <div class="state-title">
+            <span>Stanje: </span>
+            <span id="state">NORMALNO</span>
+        </div>
+        <img src="./plant_img.png">
+    </div>
+    <p hidden id="status">WebSocket not connected.</p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    height: 400px;
+    margin: 50px 0;
+}
+
+.title {
+    background-color: #307549;
+    margin: 0;
+    padding: 15px;
+    padding-right: 20px;
+    width: max-content;
+    border-top-right-radius: 37px;
+    border-bottom-right-radius: 37px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 60px;
+    color: #c9c9c9;
+}
+
+.state-title {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.state-title span {
+    font-size: 50px;
+}
+
+.state-list {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0 10px 50px;
+}
+
+.state-list span {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.error-list {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0 10px 50px;
+}
+
+.error-list span {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label{
+    margin: 10px;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    cursor: pointer;
+}
+
+form label input[type="radio"] {
+    height: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    accent-color: black;
+}
+
+.buttons {
+    margin: 50px 0 50px 50px;
+}
+
+button {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 50px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #c9c9c9;
+    background-color: #307549;
+    border: none;
+    border-radius: 20px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #205232;
+    color: #c9c9c9;
+    transform: scale(1.05);
+}
