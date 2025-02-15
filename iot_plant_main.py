@@ -84,7 +84,7 @@ class MQTTClient:
                 print(f"Spremljeno: Zapisano vrijeme zalijevanja")
 
             # Decide whether to water the plant
-            self.should_water = 1 if self.next_watering_date == date.today() or self.web_notification == True else 0
+            self.should_water = 1 if self.next_watering_date >= date.today() or self.web_notification == True else 0
             client.publish(MQTT_OUTPUT_TOPIC, str(self.should_water))
 
         except ValueError:

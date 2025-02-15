@@ -24,28 +24,10 @@
             <p id="next-water-text">Status biljke: --</p>
 
         </div>
-
-        <div class="error-list">
-            <span>Odaberi pogrešku:</span>
-            <form>
-                <label>
-                    <input type="radio" id="water" name="selected-error" value="Water">
-                    Vrijeme zalijevanja
-                </label>
-                <label>
-                    <input type="radio" id="temperature" name="selected-error" value="Temperature">
-                    Temperatura
-                </label>
-                <label>
-                    <input type="radio" id="humidity" name="selected-error" value="Humidity">
-                    Vlaga
-                </label>
-            </form>
-        </div>
         <div class="buttons">
             <button onclick="sendCommand('1')">UPALI OBAVIJEST</button>
             <button onclick="sendCommand('0')">UGASI OBAVIJEST</button>
-            <button onclick="getSensorData()">Get Sensor Data</button>
+            <button onclick="getSensorData()">OSVJEŽI PODATKE</button>
         </div>
     </div>
     <div class="right">
@@ -53,7 +35,6 @@
             <span>Stanje: </span>
             <span id="state">NORMALNO</span>
         </div>
-        <img src="./plant_img.png">
     </div>
     <p hidden id="status">WebSocket not connected.</p>
 </body>
