@@ -36,7 +36,7 @@ img {
 h1 {
     margin: 0;
     font-size: 60px;
-    color: #c9c9c9;
+    color: white;
 }
 
 .state-title {
@@ -54,9 +54,15 @@ h1 {
     margin: 50px 0 10px 50px;
 }
 
-.state-list span {
+.state-list h3 {
     font-size: 30px;
     margin-bottom: 20px;
+}
+
+.state-list p {
+    font-size: 30px;
+    margin: 10px 0;
+    margin-left: 50px;
 }
 
 .error-list {
@@ -102,7 +108,7 @@ button {
     padding: 20px;
     font-size: 20px;
     font-weight: bold;
-    color: #c9c9c9;
+    color: white;
     background-color: #307549;
     border: none;
     border-radius: 20px;
@@ -112,6 +118,6 @@ button {
 button:hover {
     cursor: pointer;
     background-color: #205232;
-    color: #c9c9c9;
+    color: white;
     transform: scale(1.05);
 }

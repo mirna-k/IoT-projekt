@@ -69,19 +69,20 @@ class MQTTClient:
 
             if result is None:
                 self.next_watering_date = date.today()
-                print("Nema prethodnog zapisa. Potrebno je danas zaliti biljku:", self.next_watering_date)
+                # print("Nema prethodnog zapisa. Potrebno je danas zaliti biljku:", self.next_watering_date)
             else:
                 last_watering_date = result[0]
-                print("Posljednji zapis zalijevanja:", last_watering_date)
+                # print("Posljednji zapis zalijevanja:", last_watering_date)
                 self.next_watering_date = last_watering_date + timedelta(days=5)
-                print(f"Datum sljedećeg zalijevanja: {self.next_watering_date}")
+                # print(f"Datum sljedećeg zalijevanja: {self.next_watering_date}")
 
             # Save watering event
             if is_watered == 1:
-                sql = "INSERT INTO zalijevanja (biljka_id) VALUES (%s)"
-                cursor.execute(sql, (plant_id,))
-                con.commit()
-                print(f"Spremljeno: Zapisano vrijeme zalijevanja")
+                if result is None or result[0] != date.today():
+                    sql = "INSERT INTO zalijevanja (biljka_id) VALUES (%s)"
+                    cursor.execute(sql, (plant_id,))
+                    con.commit()
+                    print(f"Spremljeno: Zapisano vrijeme zalijevanja")
 
             # Decide whether to water the plant
             self.should_water = 1 if self.next_watering_date >= date.today() or self.web_notification == True else 0

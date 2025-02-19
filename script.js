@@ -41,33 +41,28 @@ function updateSensorUI(data) {
     const tempElement = document.getElementById("temperature-text");
     const vlagaElement = document.getElementById("humidity-text");
     const timeElement = document.getElementById("time-text");
-    const notifyButton = document.querySelector(".buttons button:first-child");
+    const stateElement = document.getElementById("state");
 
     tempElement.innerText = `Trenutna temperatura: ${temperatura}°C`;
     vlagaElement.innerText = `Trenutna vlaga: ${vlaga}%`;
     timeElement.innerText = `Vrijeme učitavanja: ${timestamp}h`;
 
-    let statusMessage = "NORMALNO";
-    let errorDetected = false;
+    stateElement.innerText = "NORMALNO";
 
-     if (temperatura < 10 || temperatura > 40) {
-        statusMessage = "KRITIČNA TEMPERATURA";
-        errorDetected = true;
-    } else if (vlaga < 30 || vlaga > 80) {
-        statusMessage = "KRITIČNA VLAGA";
-        errorDetected = true;
+    if (temperatura < 10) {
+        stateElement.innerText = "NISKA TEMPERATURA";
+    } else if ( temperatura > 40) {
+        stateElement.innerText = "VISOKA TEMPERATURA";
+    } else if (vlaga < 40) {
+        stateElement.innerText = "NISKI POSTOTAK VLAGE";
+    } else if (vlaga > 80) {
+        stateElement.innerText = "VISOKI POSTOTAK VLAGE";
+    } else if (temperatura < 10 || temperatura > 40 || vlaga < 40 || vlaga > 80) {
+        stateElement.innerText = "KRITIČNE VRIJEDNOSTI TEMPERATURE I VLAGE";
     }
 
     tempElement.style.color = (temperatura < 10 || temperatura > 40) ? "red" : "green";
-    vlagaElement.style.color = (vlaga < 30 || vlaga > 80) ? "red" : "green";
-    
-    // Sakrij ili prikaži error listu i gumb
-    if (errorDetected) {
-        notifyButton.style.display = "none";
-        sendCommand("1");  // Automatski upali obavijest
-    } else {
-        notifyButton.style.display = "inline-block";
-    }
+    vlagaElement.style.color = (vlaga < 40 || vlaga > 80) ? "red" : "green";
 }
 
 function updateWateringUI(message) {

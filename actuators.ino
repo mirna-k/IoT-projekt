@@ -5,7 +5,7 @@
 #define LED_D2_PIN 2
 
 // Initialize the LCD with I2C address (common addresses: 0x27 or 0x3F)
-LiquidCrystal_I2C lcd(0x27, 20, 2); // 20 columns, 2 rows
+LiquidCrystal_I2C lcd(0x27, 20, 4); // 20 columns, 4 rows
 
 void setup() {
   pinMode(BUZZER_D7_PIN, OUTPUT);
@@ -36,6 +36,22 @@ void loop() {
 
         lcd.setCursor(0, 1);
         lcd.print("Water: "); lcd.print(water==0 ? "No" : "Yes");
+		
+        lcd.setCursor(0, 2);
+        if (t < 10.0){
+          lcd.print("Temp: low");
+        } 
+        else if (t > 40.0){
+          lcd.print("Temp: high");
+        } else lcd.print("Temp: good");
+
+        lcd.setCursor(0, 3);
+        if (h < 40.0) {
+          lcd.print("Humidity: low");
+        } 
+        else if (h > 80.0){
+          lcd.print("Humidity: high");
+        } else lcd.print("Humidity: good");
       }
       
       // Debug
